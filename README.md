@@ -9,7 +9,7 @@
 ## Requirements for assignments:
 
 - Finally you will need to implement a month calendar like below:
-  ![](https://s3.cn-north-1.amazonaws.com.cn/glowstaticdev/zx/GlowRNTest.gif)
+  ![](./GlowRNTest.gif)
 
 - Show up to **72 month** before current month, and **12 months** after current month;
 - Show date tiles in each month correctly;
