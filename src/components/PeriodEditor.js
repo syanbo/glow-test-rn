@@ -9,32 +9,39 @@ import {
   Text,
   View,
   StyleSheet,
-  Platform,
+  Platform
 } from 'react-native';
 
 import CalendarList from './CalendarList';
 import { Colors } from '../common/Colors';
 
 export class PeriodEditor extends Component {
+  names = ['周日', '周一', '周二', '周三', '周四', '周五', '周六'];
 
   render() {
-    let names = ['周日', '周一', '周二', '周三', '周四', '周五', '周六'];
     return (
       <View style={style.wrapper}>
-        <View style={style.appBarLayout} >
-          <View style={style.headerWrapper}>
-            <View style={style.week}>
-              {names.map((day, idx) => (
-                <Text allowFontScaling={false} key={idx} style={style.headerWeekday} numberOfLines={1}>{day}</Text>
-              ))}
-            </View>
+        <View style={style.appBarLayout}>
+          <View style={style.week}>
+            {this.names.map((day, idx) => (
+              <Text
+                allowFontScaling={false}
+                key={idx}
+                style={style.headerWeekday}
+                numberOfLines={1}
+              >
+                {day}
+              </Text>
+            ))}
           </View>
         </View>
         <CalendarList
           style={style.calendarList}
           pastScrollRange={72}
           futureScrollRange={12}
-          ref={(ref) => { this.calendarList = ref; }}
+          ref={(ref) => {
+            this.calendarList = ref;
+          }}
           selectedDay={this.props.selectedDayData}
           onVisibleMonthsChange={this._visibleMonthsChange}
           scrollingEnabled={true}
@@ -55,36 +62,36 @@ const style = StyleSheet.create({
       },
       ios: {
         borderBottomWidth: StyleSheet.hairlineWidth,
-        borderColor: "#e0e0e0",
-      },
+        borderColor: '#e0e0e0'
+      }
     })
   },
   wrapper: {
     flex: 1,
-    width: '100%',
+    width: '100%'
   },
   calendarList: {
-    width: '100%',
+    width: '100%'
   },
   headWrapper: {
     flex: 0,
     ...Platform.select({
       android: {
-        height: 42,
+        height: 42
       },
       ios: {
-        height: 32,
+        height: 32
       }
     }),
-    paddingHorizontal: 16,
+    paddingHorizontal: 16
   },
   week: {
     ...Platform.select({
       android: {
-        marginTop: 12,
+        marginTop: 12
       },
       ios: {
-        marginTop: 7,
+        marginTop: 7
       }
     }),
     flexDirection: 'row',
@@ -96,6 +103,6 @@ const style = StyleSheet.create({
     width: 32,
     textAlign: 'center',
     fontSize: 11,
-    color: Colors.TEXT_LIGHT,
-  },
+    color: Colors.TEXT_LIGHT
+  }
 });
